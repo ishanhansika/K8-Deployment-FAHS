@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fahs-portal-configmap
+  namespace: authentication
+data:
+  SWITCH_IP: "192.168.1.100"
+  SWITCH_PORT: "8080"
+  Email_or_EDU_ID: "user@example.com"
+  PASSWORD_RESET_PORTAL_LINK: "https://reset.example.com"
+  PASSWORD_RESET_PORTAL_PORT: "443"
+  SIGNUP_PORTAL_LINK: "https://signup.example.com"
+  SIGNUP_PORTAL_PORT: "443"
+  Campus_Name: "Faculty of Allied Health Sciences – UOR"
+  Logging: "FAHS Connect"

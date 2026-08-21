@@ -1,10 +1,30 @@
-apiVersion: v1
+
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fahs-login-portal-deployment
-  namespace: Authentication
+  name: fahs-portal
+  namespace: authentication
   labels:
-    app: fahs-login-portal
+    app: fahs-portal
 spec:
   replicas: 2
-  sel  
+  selector:
+    matchLabels:
+      app: fahs-portal
+  template:
+    metadata:
+      labels:
+        app: fahs-portal
+    spec:
+      containers:
+      - name: fahs-portal
+        image: ishanhansika/fahs-login-portal
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: fahs-portal-configmap
+ 
+
+
+
