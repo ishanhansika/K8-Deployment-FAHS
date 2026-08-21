@@ -1,0 +1,14 @@
+# Nginx lightweight image එක පාවිච්චි කරනවා
+FROM nginx:alpine
+
+# ඔයාගේ HTML template එක Nginx html folder එකට copy කරනවා
+COPY index.html.template /usr/share/nginx/html/index.html.template
+
+# ඔයාගේ background image එකත් copy කරන්න (campus-photo.jpg ඔයාගේ folder එකේ තියෙන්න ඕනේ)
+COPY campus-photo.jpg /usr/share/nginx/html/
+
+# Port 80 open කරනවා
+EXPOSE 80
+
+# Container එක run වෙද්දි variables ටික replace කරලා Nginx start කරනවා
+CMD envsubst < /usr/share/nginx/html/index.html.template > /usr/share/nginx/html/index.html && nginx -g "daemon off;"

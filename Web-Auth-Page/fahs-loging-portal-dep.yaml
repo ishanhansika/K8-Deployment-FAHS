@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: fahs-login-portal-deployment
+  namespace: Authentication
+  labels:
+    app: fahs-login-portal
+spec:
+  replicas: 2
+  sel  
