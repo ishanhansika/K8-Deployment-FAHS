@@ -39,9 +39,15 @@ spec:
 
 
       volumes:
-      - name: es-config-dir
+      - name: es-config-dir1
         configMap:
-          name: es-config-map
+          name: es-config-map1
+      - name: es-config-dir2
+        configMap:
+          name: es-config-map2
+      - name: es-config-dir3
+        configMap:
+          name: es-config-map3
       - name: es-persistent-storage
         persistentVolumeClaim:
           claimName: es-pv-claim
