@@ -1,0 +1,48 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssp-ldap
+  namespace: authentication
+  labels:
+    app: ssp-ldap
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ssp-ldap
+  template:
+    metadata:
+      labels:
+        app: ssp-ldap
+    spec:
+      containers:
+      - name: ssp-ldap
+        image: ltbproject/self-service-password
+        ports:
+        - containerPort: 81
+        volumeMounts:
+        - name: es-config-dir
+        mountPath: /var/www/conf/config.inc.php
+        subPath: config.inc.php
+        
+        - name: es-config-dir
+        mountPath: /var/www/css/custom.css
+        subPath: custom.css
+
+        - name: es-persistent-storage
+        mountPath: /var/www/htdocs/images
+       
+        - name: es-config-dir
+        mountPath: /var/www/conf/config.inc.local.php
+        subPath: config.inc.local.php
+
+
+      volumes:
+      - name: es-config-dir
+        configMap:
+          name: es-config-map
+      - name: es-persistent-storage
+        persistentVolumeClaim:
+          claimName: es-pv-claim
+
