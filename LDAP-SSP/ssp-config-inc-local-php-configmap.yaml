@@ -1,8 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: es-config-map1   #deployemnt eke volume eke thiyena name ek denna , es-config-map
+  name: es-config-map3   #deployemnt eke volume eke thiyena name ek denna , es-config-map
   namespace: authentication
 data:
+  config.inc.local.php: |
+    <?php // My SSP configuration
+$keyphrase = "mysecret";
+$debug = true;
+?>
   
 
