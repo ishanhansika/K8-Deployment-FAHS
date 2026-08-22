@@ -1,9 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: es-pv-claim   # Deployment එකේ ඉල්ලා ඇති නමම මෙහි තිබිය යුතුය
+  name: es-pv-claim 
+  namespace: authentication  # Deployment එකේ ඉල්ලා ඇති නමම මෙහි තිබිය යුතුය
 spec:
-  storageClassName: ssp-storage-class   <meken thamai pvc ekat connect wenne,me name eka same wenna ona pvc & pv eke>
+  storageClassName: ssp-storage-class  # <meken thamai pvc ekat connect wenne,me name eka same wenna ona pvc & pv eke>
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce

@@ -22,26 +22,26 @@ spec:
         ports:
         - containerPort: 81
         volumeMounts:
-        - name: es-config-dir1
-        mountPath: /var/www/conf/config.inc.php
-        subPath: config.inc.php
+#        - name: es-config-dir1
+ #         mountPath: /var/www/conf/config.inc.php
+ #         subPath: config.inc.php
         
         - name: es-config-dir2
-        mountPath: /var/www/css/custom.css
-        subPath: custom.css
+          mountPath: /var/www/css/custom.css
+          subPath: custom.css
 
         - name: es-persistent-storage
-        mountPath: /var/www/htdocs/images
+          mountPath: /var/www/htdocs/images
        
         - name: es-config-dir3
-        mountPath: /var/www/conf/config.inc.local.php
-        subPath: config.inc.local.php
+          mountPath: /var/www/conf/config.inc.local.php
+          subPath: config.inc.local.php
 
 
       volumes:
-      - name: es-config-dir1
-        configMap:
-          name: es-config-map1
+  #    - name: es-config-dir1
+   #     configMap:
+  #        name: es-config-map1
       - name: es-config-dir2
         configMap:
           name: es-config-map2

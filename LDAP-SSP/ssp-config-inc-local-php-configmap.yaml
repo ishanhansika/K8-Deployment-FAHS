@@ -6,8 +6,8 @@ metadata:
 data:
   config.inc.local.php: |
     <?php // My SSP configuration
-$keyphrase = "mysecret";
-$debug = true;
-?>
+    $keyphrase = "mysecret";  
+    $debug = true;
+    ?>
   
 
