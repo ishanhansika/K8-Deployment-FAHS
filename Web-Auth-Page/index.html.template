@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Login</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Network Login - FAHS</title>
     <!-- Icons load karaganna FontAwesome link eka -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,35 +17,56 @@
             font-family: 'Poppins', sans-serif;
         }
 
-      body {
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            
             min-height: 100vh;
-            
-            /* Methana thamai wenas wenne */
-            background-image: url('campus-photo.jpg'); /* Oyage photo eke nama danna */
+            background-image: url('campus-photo1.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
 
+        /* 1. Login Box එකට Fade & Slide-in ඇනිමේෂන් එක */
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .login-card {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.2); 
             width: 400px;
             padding: 50px 40px;
             border-radius: 10px;
             box-shadow: 0 15px 25px rgba(0,0,0,0.1);
             text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeSlideIn 0.8s ease-out forwards; /* ඇනිමේෂන් එක සම්බන්ධ කිරීම */
         }
 
         .login-card h2 {
-            font-size: 30px;
-            color: #333;
-            margin-bottom: 30px;
+            font-size: 24px; 
+            color: #ffffff;
+            margin-bottom: 5px;
             font-weight: 700;
+        }
+
+        .login-card p {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
         }
 
         .input-group {
@@ -55,7 +77,7 @@
         .input-group label {
             display: block;
             font-size: 12px;
-            color: #666;
+            color: #ffffff; 
             margin-bottom: 5px;
         }
 
@@ -65,30 +87,49 @@
 
         .input-wrapper i {
             position: absolute;
-            left: 0;
+            left: 15px; 
             top: 50%;
             transform: translateY(-50%);
-            color: #ccc;
+            color: #ffffff; 
             font-size: 14px;
         }
 
         .input-wrapper input {
             width: 100%;
-            padding: 10px 10px 10px 25px;
-            border: none;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 15px 12px 40px; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            border-radius: 25px; 
+            background-color: transparent; 
             outline: none;
             font-size: 14px;
-            color: #333;
-            transition: border-color 0.3s;
+            color: #ffffff; 
+            transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
+        /* 2. ලෝගෝ එකට Floating ඇනිමේෂන් එක */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .logo-img {
+            animation: float 4s ease-in-out infinite;
+            width: 85px; /* ප්‍රමාණය මඳක් ගැළපුවා */
+            height: auto;
+            filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.4)); /* ලෝගෝ එක කැපී පෙනෙන්න කුඩා shadow එකක් */
+        }
+
+        /* 3. Input එක ක්ලික් කළ විට එන Maroon Glow එක */
         .input-wrapper input:focus {
-            border-bottom: 1px solid #a020f0;
+            border: 1px solid #7b1113; 
+            box-shadow: 0 0 10px rgba(123, 17, 19, 0.4); 
+            background-color: rgba(255, 255, 255, 0.15); 
         }
 
         .input-wrapper input::placeholder {
-            color: #aaa;
+            color: #dddddd; 
             font-weight: 300;
         }
 
@@ -100,97 +141,80 @@
 
         .forgot-pass a {
             font-size: 12px;
-            color: #666;
+            color: #ffffff; 
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .forgot-pass a:hover {
-            color: #a020f0;
+            color: #ffcccc; /* Hover කරද්දි ගැලපෙන වර්ණයකට හැරවීම */
         }
 
+        /* Login බොත්තමේ ප්‍රධාන පෙනුම */
         .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #00d2ff, #a020f0);
+            background: linear-gradient(to right, #7b1113, #a0181b); 
+            color: #ffffff;
             border: none;
-            border-radius: 25px;
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
+            border-radius: 25px; 
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+            width: 100%; 
         }
 
         .login-btn:hover {
-            opacity: 0.9;
+            background: linear-gradient(to right, #a0181b, #7b1113);
+            box-shadow: 0 6px 12px rgba(123, 17, 19, 0.4); 
+            transform: translateY(-2px); 
         }
-
-        .social-text {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .social-icons a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .social-icons .fb { background-color: #3b5998; }
-        .social-icons .tw { background-color: #1da1f2; }
-        .social-icons .go { background-color: #ea4335; }
 
         .signup-text {
             font-size: 12px;
-            color: #666;
+            color: #ffffff; 
             display: flex;
             flex-direction: column;
             gap: 5px;
+            margin-top: 25px;
         }
 
         .signup-text a {
-            color: #333;
+            color: #ffffff; 
             text-decoration: none;
             font-weight: 600;
             font-size: 13px;
+            transition: color 0.3s ease;
         }
 
         .signup-text a:hover {
-            color: #a020f0;
+            color: #ffcccc;
         }
     </style>
 </head>
 <body>
 
     <div class="login-card">
-        <h2 style="font-size: 24px; margin-bottom: 5px; color: #333;">${Logging}</h2>
-<p style="font-size: 13px; color: #888; margin-bottom: 25px;">${Campus_Name}</p>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <!-- .logo-img Class එක ඇතුළත් කර ඇත -->
+            <img src="logo1.png" alt="University Logo" class="logo-img">
+        </div>
+        
+        <!-- කැම්පස් එකේ නම යාවත්කාලීන කර ඇත -->
+		<h2>Internet Login</h2>
+        <p>${Campus_Name}</p>
 
-        <!-- Switch ekata submit wena form eka -->
-        <form method="post" action="https://${SWITCH_IP}:${SWITCH_PORT}/login.html">
+        <form method="post" action="http://${SWITCH_IP}:${SWITCH_PORT}/login.html">
             <input type="hidden" name="buttonClicked" value="4">
 
             <div class="input-group">
+                <!-- Label එක යාවත්කාලීන කර ඇත -->
                 <label>${Email_or_EDU_ID}</label>
                 <div class="input-wrapper">
                     <i class="far fa-user"></i>
-                    <input type="email" name="email" placeholder="Type your email" required>
+                    <input type="text" name="username" placeholder="Type your Email or Edu-ID" required>
                 </div>
             </div>
 
@@ -203,16 +227,13 @@
             </div>
 
             <div class="forgot-pass">
-                <!-- LDAP Password Reset Link Eka -->
                 <a href="http://${PASSWORD_RESET_PORTAL_LINK}:${PASSWORD_RESET_PORTAL_PORT}">Forgot password?</a>
             </div>
 
             <button type="submit" class="login-btn">LOGIN</button>
         </form>
 
-
         <div class="signup-text">
-            
             <a href="http://${SIGNUP_PORTAL_LINK}:${SIGNUP_PORTAL_PORT}">SIGN UP</a>
         </div>
     </div>

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: es-pv-claim2
+  namespace: authentication   # Deployment එකේ ඉල්ලා ඇති නමම මෙහි තිබිය යුතුය
+spec:
+  storageClassName: fahs-storage-class  #<meken thamai pvc ekat connect wenne,me name eka same wenna ona pvc & pv eke>
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 0.2Gi   # ඔබට අවශ්ය ප්රමාණය (උදා: 10Gi)

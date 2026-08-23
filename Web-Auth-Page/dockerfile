@@ -5,8 +5,9 @@ FROM nginx:alpine
 COPY index.html.template /usr/share/nginx/html/index.html.template
 
 # ඔයාගේ background image එකත් copy කරන්න (campus-photo.jpg ඔයාගේ folder එකේ තියෙන්න ඕනේ)
-COPY campus-photo.jpg /usr/share/nginx/html/
-
+COPY campus-photo1.jpg /usr/share/nginx/html/
+COPY logo1.png /usr/share/nginx/html/
+COPY logo.png /usr/share/nginx/html/
 # Port 80 open කරනවා
 EXPOSE 80
 

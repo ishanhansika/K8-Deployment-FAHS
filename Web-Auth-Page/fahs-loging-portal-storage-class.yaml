@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fahs-storage-class
+  namespace: authentication
+provisioner: rancher.io/local-path  # බහුලව භාවිත වන Local path provisioner එකක්
+volumeBindingMode: WaitForFirstConsumer  # Pod එක ඩිප්ලොයි වන තුරු ස්ටෝරේජ් සෑදීම කල් තබයි
+reclaimPolicy: Delete

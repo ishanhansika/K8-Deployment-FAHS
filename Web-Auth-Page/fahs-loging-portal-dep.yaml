@@ -19,12 +19,20 @@ spec:
       containers:
       - name: fahs-portal
         image: ishanhansika/fahs-login-portal
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         envFrom:
         - configMapRef:
             name: fahs-portal-configmap
- 
+        volumeMounts:
+        - name: es-persistent-storage
+          mountPath: /usr/share/nginx/html/campus-photo1.jpg
+          subPath: campus-photo1.jpg
+      volumes:
+      - name: es-persistent-storage
+        persistentVolumeClaim:
+          claimName: es-pv-claim2 
 
 
 
