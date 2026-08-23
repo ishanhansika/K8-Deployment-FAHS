@@ -9,6 +9,6 @@ spec:
   ports:
     - protocol: TCP
       port: 8081         # Service port
-      targetPort: 81   # container port
+      targetPort: 80   # container port
       nodePort: 30081  # Port on nodes (30000-32767)
   type: NodePort

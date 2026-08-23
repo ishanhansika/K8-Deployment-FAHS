@@ -18,9 +18,9 @@ spec:
     spec:
       containers:
       - name: ssp-ldap
-        image: ltbproject/self-service-password
+        image: ishanhansika/self-service-password:latest
         ports:
-        - containerPort: 81
+        - containerPort: 80
         volumeMounts:
 #        - name: es-config-dir1
  #         mountPath: /var/www/conf/config.inc.php
@@ -30,9 +30,9 @@ spec:
           mountPath: /var/www/css/custom.css
           subPath: custom.css
 
-        - name: es-persistent-storage
-          mountPath: /var/www/htdocs/images
-       
+#        - name: es-persistent-storage
+#          mountPath: /var/www/htdocs/images
+#          subPath: campus-photo1.jpg       
         - name: es-config-dir3
           mountPath: /var/www/conf/config.inc.local.php
           subPath: config.inc.local.php
@@ -48,7 +48,7 @@ spec:
       - name: es-config-dir3
         configMap:
           name: es-config-map3
-      - name: es-persistent-storage
-        persistentVolumeClaim:
-          claimName: es-pv-claim
+ #     - name: es-persistent-storage
+ #       persistentVolumeClaim:
+ #         claimName: es-pv-claim
 

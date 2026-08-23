@@ -7,6 +7,9 @@ data:
   config.inc.local.php: |
     <?php // My SSP configuration
     $keyphrase = "mysecret";  
+    $use_questions = false;
+    $custom_css = "custom.css";
+    $use_sms = false;
     $debug = true;
     ?>
   

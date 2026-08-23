@@ -5,5 +5,101 @@ metadata:
   namespace: authentication
 data:
   custom.css: |
-    
+      /* CSS for LDAP Tool Box Self Service Password */
 
+      html, body {
+        /* පසුබිමට අදාළ පින්තූරය එක් කර ඇත */
+        background: url('background-image-path.jpg') no-repeat center center fixed;
+        background-size: cover;
+        padding-top: 20px;
+        font-size: 12pt;
+        /* මැදට ගැනීම සඳහා */
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* --- Box එකේ පළල අඩු කිරීම සඳහා --- */
+      .container {
+        max-width: 400px !important; /* Box එකේ පළල. මෙය 350px, 450px ලෙස වෙනස් කර ඔබට අවශ්‍ය ගානට හදාගන්න */
+        width: 100%;
+      }
+
+      .captcha {
+        padding-top: 0 !important;
+        margin-bottom: 5px !important;
+      }
+
+      a, a:hover {
+        text-decoration: none;
+      }
+
+      .card {
+        /* සුදු පැහැති කොටුව සහ සෙවනැල්ල */
+        background-color: #ffffff !important;
+        border-radius: 12px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+        padding: 30px;
+        border: none !important;
+      }
+
+      img.menu-logo {
+        display: inline;
+        height: 25px;
+      }
+
+      .table {
+        margin-bottom: 0;
+      }
+
+      .display img {
+        margin-bottom: 20px;
+      }
+
+      div#footer {
+        position:fixed;
+        bottom:0;
+        background-color: transparent !important;
+        color: #fff;
+        text-align:center;
+        padding:5px;
+        width:100%;
+      }
+
+      textarea#sshkey {
+        font-family: monospace;
+        word-break: break-all;
+        resize: vertical;
+        min-height: 10em;
+      }
+
+      /* --- Button සහ Input සඳහා --- */
+
+      .form-control, input[type="text"], input[type="password"] {
+        border-radius: 6px;
+        background-color: #fcfcfc;
+      }
+
+      .btn, .btn-success, input[type="submit"], button[type="submit"] {
+        background: linear-gradient(to right, #00d2ff, #7a28ff) !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 30px !important;
+        padding: 10px 20px;
+        width: 100%;
+        font-weight: bold;
+      }
+
+      @media print {
+        html, body {
+          margin: 0;
+          padding: 0;
+        }
+        .container {
+          width: 100% !important; /* Print කිරීමේදී පමණක් සම්පූර්ණ පළල ලබා ගැනීම */
+        }
+        a[href]:after {
+          content: none;
+        }
+      }
