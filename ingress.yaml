@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: authentication-ingress
+  namespace: authentication
+spec:
+  ingressClassName: "nginx"
+  rules:
+  - host: portal.ahs.ruh.ac.lk
+    http:
+      paths:
+      - path: /
+        pathType: Prefix  
+        backend:
+          service:
+            name: fahs-portal-service 
+            port: 
+              number: 8080
+  - host: account.ahs.ruh.ac.lk
+    http:
+      paths: 
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ssp-service
+            port:
+              number: 8081

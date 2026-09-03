@@ -11,6 +11,13 @@ data:
     $custom_css = "custom.css";
     $use_sms = false;
     $debug = true;
+    $ldap_type = "openldap";
+    $ldap_base = "dc=ruh,dc=ac,dc=lk";
+    $ldap_url = "10.51.60.13";
+    $ldap_filter = "(&(objectClass=person)(mail={login}))";
+    $ldap_binddn = "cn=admin,dc=ruh,dc=ac,dc=lk";
+    $ldap_bindpw = "7nYibf&74:.";
+    $who_change_password = "user";
     ?>
   
 

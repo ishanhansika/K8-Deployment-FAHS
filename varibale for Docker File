@@ -1,0 +1,19 @@
+${SWITCH_IP}:${SWITCH_PORT}
+${Email_or_EDU_ID}
+${PASSWORD_RESET_PORTAL_LINK}:${PASSWORD_RESET_PORTAL_PORT}
+${SIGNUP_PORTAL_LINK}:${SIGNUP_PORTAL_PORT}
+${Campus_Name} Faculty of Allied Health Sciences – UOR
+${Logging} FAHS Connect
+
+
+docker run -d \
+  -p 8080:80 \
+  -e SWITCH_IP="192.168.1.100" \
+  -e SWITCH_PORT="90"\
+  -e Email_or_EDU-ID="Email"\
+  -e Logging="FAHS Connect"\
+  -e Campus_Name="Faculty of Allied Health Sciences – UOR"\
+  -e RESET_LINK="http://reset.fahs.uor.lk" \
+  -e SIGNUP_LINK="http://signup.fahs.uor.lk" \
+  --name fahs-portal \
+  fahs-login-portal
