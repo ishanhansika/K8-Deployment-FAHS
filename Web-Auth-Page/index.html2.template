@@ -207,7 +207,7 @@
         <p>${Campus_Name}</p>
 
         <!-- FortiGate eke authentication path eka /fgtauth (Port eka HTTP nam 1000, HTTPS nam 1003) -->
-        <form method="post" action="http://10.51.100.253:1000/fgtauth">
+        <form method="post" action="https://salmal.ahs.ruh.ac.lk:1003/fgtauth">
             
             <!-- URL eken ena magic eka save karaganna hidden field eka -->
             <input type="hidden" name="magic" id="magicInput" value="">
@@ -239,14 +239,20 @@
 
         <!-- Me script eka add karanna, ethakota URL eke ena magic=xxxx kalla auto hidden field ekata gannawa -->
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const magicValue = urlParams.get('magic');
-                if(magicValue) {
-                    document.getElementById('magicInput').value = magicValue;
-                }
-            });
-        </script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const magicValue = urlParams.get('magic');
+
+        // URL එකෙන් එන Magic අගය Hidden field එකට දැමීම
+        if(magicValue) {
+            document.getElementById('magicInput').value = magicValue;
+        }
+
+        // SSL දෝෂ මඟහැරීම සඳහා බලහත්කාරයෙන් HTTP (Port 1000) Action එකක් ලෙස යෙදීම
+        // මෙහිදී postUrl ලබාගැනීම සම්පූර්ණයෙන්ම ඉවත් කර ඇත
+        document.getElementById('loginForm').action = "https://salmal.ahs.ruh.ac.lk:1003/fgtauth";
+    });
+	</script>
 
         <div class="signup-text">
             <a href="http://${SIGNUP_PORTAL_LINK}:${SIGNUP_PORTAL_PORT}">SIGN UP</a>
