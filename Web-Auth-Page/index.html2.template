@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Network Login - FAHS</title>
+    <!-- Icons load karaganna FontAwesome link eka -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('campus-photo1.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* 1. Login Box එකට Fade & Slide-in ඇනිමේෂන් එක */
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.2); 
+            width: 400px;
+            padding: 50px 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeSlideIn 0.8s ease-out forwards; /* ඇනිමේෂන් එක සම්බන්ධ කිරීම */
+        }
+
+        .login-card h2 {
+            font-size: 24px; 
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .login-card p {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            color: #ffffff; 
+            margin-bottom: 5px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px; 
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff; 
+            font-size: 14px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 15px 12px 40px; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            border-radius: 25px; 
+            background-color: transparent; 
+            outline: none;
+            font-size: 14px;
+            color: #ffffff; 
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        /* 2. ලෝගෝ එකට Floating ඇනිමේෂන් එක */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .logo-img {
+            animation: float 4s ease-in-out infinite;
+            width: 85px; /* ප්‍රමාණය මඳක් ගැළපුවා */
+            height: auto;
+            filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.4)); /* ලෝගෝ එක කැපී පෙනෙන්න කුඩා shadow එකක් */
+        }
+
+        /* 3. Input එක ක්ලික් කළ විට එන Maroon Glow එක */
+        .input-wrapper input:focus {
+            border: 1px solid #7b1113; 
+            box-shadow: 0 0 10px rgba(123, 17, 19, 0.4); 
+            background-color: rgba(255, 255, 255, 0.15); 
+        }
+
+        .input-wrapper input::placeholder {
+            color: #dddddd; 
+            font-weight: 300;
+        }
+
+        .forgot-pass {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-pass a {
+            font-size: 12px;
+            color: #ffffff; 
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-pass a:hover {
+            color: #ffcccc; /* Hover කරද්දි ගැලපෙන වර්ණයකට හැරවීම */
+        }
+
+        /* Login බොත්තමේ ප්‍රධාන පෙනුම */
+        .login-btn {
+            background: linear-gradient(to right, #7b1113, #a0181b); 
+            color: #ffffff;
+            border: none;
+            border-radius: 25px; 
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+            width: 100%; 
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(to right, #a0181b, #7b1113);
+            box-shadow: 0 6px 12px rgba(123, 17, 19, 0.4); 
+            transform: translateY(-2px); 
+        }
+
+        .signup-text {
+            font-size: 12px;
+            color: #ffffff; 
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 25px;
+        }
+
+        .signup-text a {
+            color: #ffffff; 
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .signup-text a:hover {
+            color: #ffcccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <!-- .logo-img Class එක ඇතුළත් කර ඇත -->
+            <img src="logo1.png" alt="University Logo" class="logo-img">
+        </div>
+        
+        <!-- කැම්පස් එකේ නම යාවත්කාලීන කර ඇත -->
+		<h2>Internet Login</h2>
+        <p>${Campus_Name}</p>
+
+        <!-- FortiGate eke authentication path eka /fgtauth (Port eka HTTP nam 1000, HTTPS nam 1003) -->
+        <form method="post" action="http://10.51.100.253:1000/fgtauth">
+            
+            <!-- URL eken ena magic eka save karaganna hidden field eka -->
+            <input type="hidden" name="magic" id="magicInput" value="">
+
+            <div class="input-group">
+                <label>${Email_or_EDU_ID}</label>
+                <div class="input-wrapper">
+                    <i class="far fa-user"></i>
+                    <!-- FortiGate eka expect karanne 'username' kiyana name eka -->
+                    <input type="text" name="username" placeholder="Type your Email or Edu-ID" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <!-- FortiGate eka expect karanne 'password' kiyana name eka -->
+                    <input type="password" name="password" placeholder="Type your password" required>
+                </div>
+            </div>
+
+            <div class="forgot-pass">
+                <a href="http://${PASSWORD_RESET_PORTAL_LINK}:${PASSWORD_RESET_PORTAL_PORT}">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+
+        <!-- Me script eka add karanna, ethakota URL eke ena magic=xxxx kalla auto hidden field ekata gannawa -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const magicValue = urlParams.get('magic');
+                if(magicValue) {
+                    document.getElementById('magicInput').value = magicValue;
+                }
+            });
+        </script>
+
+        <div class="signup-text">
+            <a href="http://${SIGNUP_PORTAL_LINK}:${SIGNUP_PORTAL_PORT}">SIGN UP</a>
+        </div>
+    </div>
+
+</body>
+</html>
