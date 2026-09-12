@@ -271,7 +271,7 @@
 
             // Set dynamic form action from the 'post' URL parameter. 
         
-	    const form = document.getElementById("login");
+	    const form = document.getElementById("loginForm");
             form.action = fgtcont;
             document.getElementById("magic").value = magic;
             document.getElementById("ssid").value = ssid;
