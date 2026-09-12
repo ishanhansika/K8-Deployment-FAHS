@@ -207,7 +207,7 @@
         <p>${Campus_Name}</p>
 
         <!-- FortiGate eke authentication path eka /fgtauth (Port eka HTTP nam 1000, HTTPS nam 1003) -->
-        <form method="post" action="https://salmal.ahs.ruh.ac.lk:1003/fgtauth">
+        <form id="loginForm" method="post" action="">
             
             <!-- URL eken ena magic eka save karaganna hidden field eka -->
             <input type="hidden" name="magic" id="magicInput" value="">
@@ -238,22 +238,29 @@
         </form>
 
         <!-- Me script eka add karanna, ethakota URL eke ena magic=xxxx kalla auto hidden field ekata gannawa -->
+        <!-- වෙනස 02: URL එකෙන් post අගය ලබාගෙන එය form action එකට ලබා දීම -->
         <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const magicValue = urlParams.get('magic');
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            const magicValue = urlParams.get('magic');
+            const postUrl = urlParams.get('post');
 
-        // URL එකෙන් එන Magic අගය Hidden field එකට දැමීම
-        if(magicValue) {
-            document.getElementById('magicInput').value = magicValue;
-        }
+            // URL එකෙන් එන Magic අගය Hidden field එකට දැමීම
+            if(magicValue) {
+                document.getElementById('magicInput').value = magicValue;
+            }
 
-        // SSL දෝෂ මඟහැරීම සඳහා බලහත්කාරයෙන් HTTP (Port 1000) Action එකක් ලෙස යෙදීම
-        // මෙහිදී postUrl ලබාගැනීම සම්පූර්ණයෙන්ම ඉවත් කර ඇත
-        document.getElementById('loginForm').action = "https://salmal.ahs.ruh.ac.lk:1003/fgtauth";
-    });
-	</script>
-
+            // FortiGate මගින් ලබාදුන් post URL එක (HTTP Port 1000) form action එක ලෙස යෙදීම
+            if(postUrl) {
+                document.getElementById('loginForm').action = postUrl;
+            } else {
+                // Fallback (URL එකේ post parameter එකක් නොමැති නම් පමණක්)
+                document.getElementById('loginForm').action = "https://salmal.ahs.ruh.ac.lk:1003/fgtauth";
+            }
+        });
+        </script>
+            
         <div class="signup-text">
             <a href="http://${SIGNUP_PORTAL_LINK}:${SIGNUP_PORTAL_PORT}">SIGN UP</a>
         </div>

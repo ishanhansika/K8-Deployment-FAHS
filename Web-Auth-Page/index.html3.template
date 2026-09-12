@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Network Login - FAHS</title>
+    <!-- FontAwesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('campus-photo1.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Fade & Slide-in Animation */
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.2); 
+            width: 400px;
+            padding: 50px 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeSlideIn 0.8s ease-out forwards;
+        }
+
+        .login-card h2 {
+            font-size: 24px; 
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .login-card p {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            color: #ffffff; 
+            margin-bottom: 5px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px; 
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff; 
+            font-size: 14px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 15px 12px 40px; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            border-radius: 25px; 
+            background-color: transparent; 
+            outline: none;
+            font-size: 14px;
+            color: #ffffff; 
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        /* Floating Logo Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .logo-img {
+            animation: float 4s ease-in-out infinite;
+            width: 85px; 
+            height: auto;
+            filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.4));
+        }
+
+        /* Input Glow on Focus */
+        .input-wrapper input:focus {
+            border: 1px solid #7b1113; 
+            box-shadow: 0 0 10px rgba(123, 17, 19, 0.4); 
+            background-color: rgba(255, 255, 255, 0.15); 
+        }
+
+        .input-wrapper input::placeholder {
+            color: #dddddd; 
+            font-weight: 300;
+        }
+
+        .forgot-pass {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+        .forgot-pass a {
+            font-size: 12px;
+            color: #ffffff; 
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-pass a:hover {
+            color: #ffcccc;
+        }
+
+        /* Integrated Custom CSS for Remember Me & Error Message */
+        .error-message {
+            background-color: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff4d4d;
+            color: #ffcccc;
+            font-size: 13px;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .remember-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .remember-wrapper input[type="checkbox"] {
+            cursor: pointer;
+        }
+        
+        .remember-wrapper label {
+            font-size: 12px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Login Button Styling */
+        .login-btn {
+            background: linear-gradient(to right, #7b1113, #a0181b); 
+            color: #ffffff;
+            border: none;
+            border-radius: 25px; 
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+            width: 100%; 
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(to right, #a0181b, #7b1113);
+            box-shadow: 0 6px 12px rgba(123, 17, 19, 0.4); 
+            transform: translateY(-2px); 
+        }
+
+        .signup-text {
+            font-size: 12px;
+            color: #ffffff; 
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 25px;
+        }
+
+        .signup-text a {
+            color: #ffffff; 
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .signup-text a:hover {
+            color: #ffcccc;
+        }
+    </style>
+
+    <script type="text/javascript">
+        let fgtcont, magic, ssid;
+
+        window.onload = function () {
+            const uri = window.location.search;
+            const param = new URLSearchParams(uri);
+            
+            // Extract URL Parameters
+            fgtcont = param.get('post');
+            magic = param.get('magic');
+            ssid = param.get('ssid');
+            const authStatus = param.get('Auth');
+
+            // Show error message if login failed
+            if (authStatus === 'Failed') {
+                document.getElementById("errorMessage").style.display = "block";
+            }
+
+            // Set Magic and SSID hidden fields directly on load
+            if (magic) document.getElementById('magic').value = magic;
+            if (ssid) document.getElementById('ssid').value = ssid;
+
+            // If auto login is enabled, check the checkbox and pre-fill username
+            const autoLoginEnabled = localStorage.getItem('autoLogin') === 'true';
+            if (autoLoginEnabled) {
+                document.getElementById("remember").checked = true;
+                const savedUsername = localStorage.getItem('savedUsername');
+                if (savedUsername) {
+                    document.getElementById("username").value = savedUsername;
+                }
+            }
+        }
+
+        function fgtSubmit() {
+            const username = document.getElementById("username").value;
+            const remember = document.getElementById("remember").checked;
+
+            // Save username and checkbox state if auto login is enabled
+            if (remember) {
+                localStorage.setItem('savedUsername', username);
+                localStorage.setItem('autoLogin', 'true');
+            } else {
+                localStorage.removeItem('savedUsername');
+                localStorage.removeItem('autoLogin');
+            }
+
+            // Set dynamic form action from the 'post' URL parameter. 
+            // Fallback to the hardcoded URL if 'post' is missing to avoid SSL issues.
+            const form = document.getElementById("loginForm");
+            form.action = fgtcont ? fgtcont : "https://salmal.ahs.ruh.ac.lk:1003/fgtauth";
+
+            return true; // Proceed with submission
+        }
+    </script>
+</head>
+<body>
+
+    <div class="login-card">
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="logo1.png" alt="University Logo" class="logo-img">
+        </div>
+        
+        <h2>Internet Login</h2>
+        <p>${Campus_Name}</p>
+
+        <!-- Integrated Error Message Box -->
+        <div id="errorMessage" class="error-message">
+            <i class="fas fa-exclamation-circle"></i> Incorrect E-Mail or password.
+        </div>
+
+        <!-- Added ID 'loginForm' and the onsubmit function -->
+        <form id="loginForm" method="post" action="" onsubmit="return fgtSubmit()">
+            
+            <!-- Hidden Fields for Captive Portal -->
+            <input type="hidden" name="magic" id="magic" value="">
+            <input type="hidden" name="ssid" id="ssid" value="">
+
+            <div class="input-group">
+                <label>${Email_or_EDU_ID}</label>
+                <div class="input-wrapper">
+                    <i class="far fa-user"></i>
+                    <!-- Added ID 'username' -->
+                    <input type="text" id="username" name="username" placeholder="${Type_your_Email_or_Edu_ID}" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="${Type_your_password}" required>
+                </div>
+            </div>
+
+            <div class="forgot-pass">
+                <a href="http://${PASSWORD_RESET_PORTAL_LINK}:${PASSWORD_RESET_PORTAL_PORT}">Forgot password?</a>
+            </div>
+
+            <!-- Integrated Remember Username Option -->
+            <div class="remember-wrapper">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember username</label>
+            </div>
+
+            <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+
+        <div class="signup-text">
+            <a href="http://${SIGNUP_PORTAL_LINK}:${SIGNUP_PORTAL_PORT}">SIGN UP</a>
+        </div>
+    </div>
+
+</body>
+</html>
