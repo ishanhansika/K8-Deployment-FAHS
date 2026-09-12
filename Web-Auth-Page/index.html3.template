@@ -270,9 +270,12 @@
             }
 
             // Set dynamic form action from the 'post' URL parameter. 
-            // Fallback to the hardcoded URL if 'post' is missing to avoid SSL issues.
-            const form = document.getElementById("loginForm");
-            form.action = fgtcont ? fgtcont : "https://salmal.ahs.ruh.ac.lk:1003/fgtauth";
+        
+	    const form = document.getElementById("login");
+            form.action = fgtcont;
+            document.getElementById("magic").value = magic;
+            document.getElementById("ssid").value = ssid;
+ 
 
             return true; // Proceed with submission
         }

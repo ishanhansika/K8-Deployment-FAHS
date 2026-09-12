@@ -2,7 +2,7 @@
 FROM nginx:alpine
 
 # ඔයාගේ HTML template එක Nginx html folder එකට copy කරනවා
-COPY index.html2.template /usr/share/nginx/html/index.html.template
+COPY index.html3.template /usr/share/nginx/html/index.html.template
 
 # ඔයාගේ background image එකත් copy කරන්න (campus-photo.jpg ඔයාගේ folder එකේ තියෙන්න ඕනේ)
 COPY campus-photo1.jpg /usr/share/nginx/html/
