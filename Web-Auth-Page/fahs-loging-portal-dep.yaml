@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: fahs-portal
-        image: ishanhansika/fahs-login-portal8
+        image: ishanhansika/loging-portal3
         imagePullPolicy: Always
         ports:
         - containerPort: 80
